@@ -1,8 +1,8 @@
 {
   "name": "game-coop-quest",
-  "displayName": "GAME MODE · Co-op Quest (unverified beta)",
-  "version": "0.1.0",
-  "description": "Local linked-author PR RPG quest. Explicit gh scan only. Beta: real SDK runtime validation pending.",
+  "displayName": "GAME MODE · Co-op Quest (beta)",
+  "version": "0.1.1",
+  "description": "Read-only linked-author PR RPG quest. Strict validation and SDK smoke tests pass on Claude Code 2.1.312; live gh integration remains beta.",
   "author": {
     "name": "Reason of Moon",
     "url": "https://github.com/Reasonofmoon"

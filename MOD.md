@@ -1,6 +1,6 @@
 # GAME MODE · Co-op Quest
 
-**Unverified beta, v0.1.0.** Standalone Claude Code mod for an honest local Pair Extraordinaire journey. Real SDK validation and live GraphQL integration are pending. No badge status or existing silver baseline is inferred.
+**Beta, v0.1.1.** Standalone Claude Code mod for an honest local Pair Extraordinaire journey. Strict SDK validation and the two initial SDK fixture tests passed in GitHub Actions on Claude Code 2.1.312. Authenticated live GraphQL integration is still unverified. No badge status or existing silver baseline is inferred.
 
 ## Install (beta)
 
@@ -45,4 +45,4 @@ Root register.tsx imports the plugin-local TypeScript core.ts, not an unverified
 
 All event names are literal on(...) registrations, all engine calls use full $.foo forms, and helper functions receiving $ are top-level declarations. process.run uses array arguments and timeoutMs:20000 following game-map/game-earcons. Failed processes, malformed JSON and GraphQL errors are summarized without stderr/stdout or raw exception dumps. No connection failure is converted into a zero count. There is a per-registration busy guard, but not a cross-session lock; avoid concurrent scans of the same project from multiple sessions.
 
-Pure tests: `node --test coop-core.test.mjs` (Node 18+; zero dependencies, no network). The parent ran all 12 tests successfully in isolated Aside-Sandbox on 2026-10-29. SDK fixture tests: claude plugin test .; strict validation: claude plugin validate --strict .. Command syntax should be confirmed against the installed CLI. No tests or code were executed by the file-writing child agent; parent must report actual sandbox results. The Claude CLI was reported absent in the available sandbox, so engine rendering, generated-type compatibility and live gh GraphQL behavior remain unverified. Mock tests are not live-authentication evidence.
+Pure tests: `node --test coop-core.test.mjs` (Node 18+; zero dependencies, no network). All 12 tests passed in an isolated Node 18.19.1 environment on 2026-10-29. SDK fixture tests: claude plugin test .; strict validation: claude plugin validate --strict .. Command syntax should be confirmed against the installed CLI. The local sandbox has no Claude CLI. GitHub Actions subsequently passed strict validation and terminal/desktop fixture rendering on Claude Code 2.1.312: [run](https://github.com/Reasonofmoon/coop-quest/actions/runs/40815688833). Live authenticated gh GraphQL behavior remains unverified. Mock tests are not live-authentication evidence.

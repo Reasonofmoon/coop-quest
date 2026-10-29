@@ -10,8 +10,14 @@
 - Mobile viewport 390 x 844: main content width and scroll width both 347 px, no horizontal overflow observed. Desktop preview also checked.
 - `preview.png` contains explicitly labelled synthetic demo data, not real achievement claims.
 
+## Publication and SDK checks
+
+- Public HTTPS demo confirmed at https://devlog.moonlang.com/coop-quest/ on 2026-10-29; initial empty state loaded, no automatic scan.
+- [Initial CI run](https://github.com/Reasonofmoon/coop-quest/actions/runs/40815688833): success. Strict marketplace/plugin/hooks validation passed on Claude Code **2.1.312**; SDK fixture tests **2/2 passed**, including terminal and desktop rendering. Core CI job also passed.
+- Runtime beta remains appropriate because live authenticated gh integration was not exercised.
+
 ## Not yet verified
 
-- Native Claude Code engine strict validation/rendering and authenticated `gh` GraphQL scanning were not available locally: the sandbox has no Claude CLI and no account credentials. The mod is an **unverified runtime beta**, not a confirmed end-to-end integration. A separate GitHub Actions SDK job attempts strict validation and fixture tests; check its actual result, not this document, for current CI status.
+- Authenticated `gh` GraphQL scanning was not available locally: the sandbox has no account credentials. The mod is not a confirmed end-to-end live-account integration. The successful SDK tests above use mocks; check current GitHub Actions for later CI runs.
 - No performance or cross-browser certification. Browser local storage is not encrypted.
 - GitHub badge awards, answer acceptance, and stars remain decisions/state on GitHub. This project never awards official badges.

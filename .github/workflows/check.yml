@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 22
       - name: Install Claude Code SDK runner
-        run: npm install -g @anthropic-ai/claude-code
+        run: npm install -g @anthropic-ai/claude-code@2.1.312
       - name: Record runner version
         run: claude --version
       - name: Strictly validate standalone plugin

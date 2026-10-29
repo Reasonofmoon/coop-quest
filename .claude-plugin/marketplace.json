@@ -5,15 +5,15 @@
     "url": "https://github.com/Reasonofmoon"
   },
   "metadata": {
-    "description": "Standalone local Co-op Quest GAME MODE mod (unverified beta)",
-    "version": "0.1.0"
+    "description": "Standalone local Co-op Quest GAME MODE mod (beta)",
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "game-coop-quest",
       "source": "./",
-      "version": "0.1.0",
-      "description": "Local linked-author PR RPG quest. Explicit gh scan only. Beta: real SDK runtime validation pending.",
+      "version": "0.1.1",
+      "description": "Read-only linked-author PR RPG quest. Strict validation and SDK smoke tests pass on Claude Code 2.1.312; live gh integration remains beta.",
       "category": "development",
       "keywords": [
         "mod",

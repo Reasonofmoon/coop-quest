@@ -4,7 +4,7 @@
 
 A zero-dependency, privacy-first static web app for tracking the collaboration evidence in a local dataset. Midnight colors, mint and amber accents, readable normal text, English/Korean toggle, and a small RPG-style progression system.
 
-[Open the web app](https://reasonofmoon.github.io/coop-quest/) · [Optional GAME MODE mod](MOD.md) · [Verification and limits](VERIFICATION.md)
+[Open the web app](https://devlog.moonlang.com/coop-quest/) · [Optional GAME MODE mod](MOD.md) · [Verification and limits](VERIFICATION.md)
 
 ![Co-op Quest interface with clearly labelled synthetic demo data](preview.png)
 
@@ -16,13 +16,23 @@ Repository: https://github.com/Reasonofmoon/coop-quest
 
 1. Place `index.html`, `app.js`, `style.css`, and `.nojekyll` at the repository root. No build step is required.
 2. In repository **Settings > Pages**, choose **Deploy from a branch**, then the intended branch and **/(root)**. Save.
-3. Visit the Pages URL shown by GitHub after deployment. The expected project URL is `https://reasonofmoon.github.io/coop-quest/`, but deployment must be confirmed before treating it as live.
+3. Visit the Pages URL shown by GitHub after deployment. The project was confirmed live at `https://devlog.moonlang.com/coop-quest/` on 2026-10-29.
 
 ### Local preview
 
 Serve the directory with any existing local static HTTP server and open its URL. There are no packages to install for the app, no backend, and no build command. A server is recommended instead of a `file://` URL because browser storage and security behavior differ for local files.
 
 The optional standalone Claude Code mod lives in the same repository, with root entry `register.tsx`. See [MOD.md](MOD.md) for commands, privacy limits, and its beta validation status. The web app works without installing the mod.
+
+## Optional GAME MODE mod (beta)
+
+In Claude Code:
+
+```text
+/plugin install game-coop-quest --marketplace Reasonofmoon/coop-quest
+```
+
+Then type `/coop-quest` to open the pane, or `/coop-quest scan OWNER/REPO` to explicitly read a repository through your existing local `gh` login. No GitHub writes are made. See [MOD.md](MOD.md).
 
 ## Use it
 
