@@ -1,0 +1,10 @@
+import type { CoopDataset } from './types/index';
+export const MILESTONES: number[];
+export const QUERY: string;
+export function validLogin(value: unknown): value is string;
+export function parseRepo(value: unknown): { owner: string; name: string; fullName: string };
+export function commandPlan(args: unknown, origin: string, intensity: string): { action: string; repo?: string };
+export function parseGraphQL(raw: unknown, player: string, repository: string, scannedAt: string): CoopDataset;
+export function datasetOf(value: unknown): CoopDataset | null;
+export function progress(count: number): { count: number; xp: number; level: number; levelXP: number; reached: number[]; nextMilestone: number | null };
+export function exportJSON(dataset: unknown): string;

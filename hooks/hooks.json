@@ -1,0 +1,6 @@
+{
+  "description": "GAME MODE · Co-op Quest hooks module",
+  "modules": [
+    "../register.tsx"
+  ]
+}

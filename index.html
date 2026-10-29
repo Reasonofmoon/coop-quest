@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101a23">
+  <meta name="description" content="A privacy-first, unofficial local game for thoughtful GitHub collaboration. Track observed co-authored pull requests without tokens or accounts.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://api.github.com; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; object-src 'none'; form-action 'none'">
+  <title>Co-op Quest · Ship together</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="Co-op Quest home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Co-op Quest<small data-i18n="brandSub">A little game. Real collaboration.</small></span></a>
+    <nav class="header-actions" aria-label="Utilities">
+      <button id="language" class="button compact quiet" type="button" aria-label="Switch to Korean">한국어</button>
+      <a class="button compact star-link" href="https://github.com/Reasonofmoon/coop-quest" target="_blank" rel="noopener noreferrer" data-i18n="star">Star on GitHub</a>
+    </nav>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span><span data-i18n="eyebrow">YOUR LOCAL COLLABORATION ADVENTURE</span></p>
+        <h1 id="hero-title" data-i18n="hero">Ship together.<br>Level up for real.</h1>
+        <p class="hero-text" data-i18n="intro">Turn useful co-authored pull requests into a personal quest. See the evidence, keep the credit honest, and make something better together.</p>
+        <p class="disclaimer" data-i18n="unofficial">An unofficial local game, not an official GitHub badge counter.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-label">CO-OP MODE <span>01</span></div>
+        <svg viewBox="0 0 340 205" focusable="false"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#294239" stroke-width=".6"/></pattern></defs><rect width="340" height="205" fill="url(#grid)"/><path d="M0 166H40V146H80V126H120V106H160V126H200V106H240V86H280V66H340" fill="none" stroke="#264639" stroke-width="19"/><path d="M0 154H40V134H80V114H120V94H160V114H200V94H240V74H280V54H340" fill="none" stroke="#78e0b3" stroke-width="3"/><path d="M70 130V105H65V88H70V73H91V88H96V105H91V130M75 80H86" fill="#79e3b5"/><path d="M176 108V83H171V66H176V51H197V66H202V83H197V108M181 58H192" fill="#f4c778"/><rect x="278" y="14" width="5" height="47" fill="#cfdfd8"/><path d="M283 14H315V29H283Z" fill="#f4c778"/><path d="M123 45V60M116 52H130M225 20V29M220 24H230M48 39V48M43 43H53" stroke="#709183" stroke-width="2"/><path d="M116 156H124V164H116ZM196 141H204V149H196ZM254 115H262V123H254Z" fill="#f4c778"/></svg>
+        <div class="art-footer"><span>PLAYER 1 + PLAYER 2</span><span>BETTER TOGETHER</span></div>
+      </div>
+    </section>
+
+    <section class="panel launch-panel" aria-labelledby="launch-title">
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="stepOne">01 / CHOOSE YOUR START</p><h2 id="launch-title" data-i18n="launchTitle">Bring your work to the quest.</h2></div><span class="privacy-pill" data-i18n="privacyPill">No login. No tokens. No analytics.</span></div>
+      <form id="scan-form" novalidate>
+        <div class="scan-fields"><div class="field"><label for="username" data-i18n="username">GitHub username</label><input id="username" name="username" type="text" placeholder="e.g. Reasonofmoon" maxlength="39" autocomplete="off" spellcheck="false" autocapitalize="off" aria-describedby="scan-help" required></div><button id="scan-button" class="button primary" type="submit" data-i18n="scan">Scan public PRs</button><button id="cancel-button" class="button danger" type="button" hidden data-i18n="cancel">Cancel scan</button></div>
+        <p id="scan-help" class="help" data-i18n="scanHelp">Only when you click: your username is sent to GitHub's public API. Up to 20 merged PRs and 100 commits per PR. No emails are stored.</p>
+      </form>
+      <div class="alternative-actions"><button class="text-button" id="demo-button" type="button" data-i18n="demo">Try a synthetic demo</button><span class="divider" aria-hidden="true"></span><button class="text-button" id="import-button" type="button" data-i18n="import">Import evidence JSON</button><button class="text-button" id="export-button" type="button" disabled data-i18n="export">Export evidence</button><input id="import-file" type="file" accept=".json,application/json" hidden></div>
+      <div class="scan-feedback"><p id="status" class="status" role="status" aria-live="polite" data-i18n="ready">Ready when you are. Nothing is fetched automatically.</p><p id="rate-limit" class="help" hidden></p><p id="storage-warning" class="help" hidden></p></div>
+    </section>
+
+    <section id="dataset-notice" class="notice" hidden aria-live="polite"><strong id="notice-title"></strong><p id="notice-description"></p></section>
+    <section class="dashboard" aria-label="Quest progress">
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-label" data-i18n="observed">Eligible PRs in this dataset</span><strong id="pr-count">0</strong><span id="pr-caption" class="stat-caption" data-i18n="noData">No evidence loaded</span></article>
+        <article class="stat-card"><span class="stat-label" data-i18n="questXP">Local quest XP</span><strong id="xp-count">0 <small>XP</small></strong><span class="stat-caption" data-i18n="xpRule">100 XP per unique eligible PR</span></article>
+        <article class="stat-card"><span class="stat-label" data-i18n="yourLevel">Your local level</span><strong id="level-count">1</strong><div class="mini-progress"><div id="level-bar"></div></div><span id="level-caption" class="stat-caption">0 / 300 XP</span></article>
+      </div>
+      <div class="content-grid">
+        <div class="main-column">
+          <section class="panel milestones" aria-labelledby="milestone-title"><div class="section-heading"><div><p class="eyebrow" data-i18n="stepTwo">02 / SMALL STEPS, SHARED WINS</p><h2 id="milestone-title" data-i18n="milestones">Your collaboration ladder</h2></div><span id="goal-label" class="goal-chip"></span></div><div id="ladder" class="ladder"></div><p id="goal-text" class="goal-text"></p><p class="help"><span data-i18n="ladderDisclaimer">Community-reported thresholds, not a badge award prediction. Counts are only from this dataset, never your complete account.</span> <a href="https://github.com/gomzyakov/github-achievements" target="_blank" rel="noopener noreferrer" data-i18n="thresholdSource">About the thresholds</a></p></section>
+          <section class="panel evidence-panel" aria-labelledby="evidence-title"><div class="section-heading"><div><p class="eyebrow" data-i18n="stepThree">03 / THE RECEIPTS MATTER</p><h2 id="evidence-title" data-i18n="evidenceTitle">Collaboration evidence</h2></div><button id="clear-button" class="text-button muted" type="button" disabled data-i18n="clear">Clear dataset</button></div><div class="evidence-tools"><label class="sr-only" for="evidence-search" data-i18n="searchLabel">Search PR titles</label><input id="evidence-search" type="search" maxlength="200" placeholder="Search PR titles" data-i18n-placeholder="searchLabel"><label class="sr-only" for="evidence-filter" data-i18n="filterLabel">Filter evidence</label><select id="evidence-filter"><option value="all" data-i18n="filterAll">All evidence</option><option value="linked-authors" data-i18n="linked">Linked authors</option><option value="trailer-candidate" data-i18n="candidate">Trailer candidates</option></select></div><div id="evidence-list" class="evidence-list"></div><p id="dataset-meta" class="help" hidden></p></section>
+        </div>
+        <aside class="side-column">
+          <section class="panel checklist-panel" aria-labelledby="checklist-title"><p class="eyebrow" data-i18n="personalQuest">YOUR NEXT REAL CONTRIBUTION</p><h2 id="checklist-title" data-i18n="checklistTitle">The good teammate quest</h2><p class="help" data-i18n="checklistIntro">A private checklist, not evidence. Progress here never adds PRs or XP.</p><div id="quest-list" class="quest-list"></div><div class="checklist-footer"><span id="quest-progress"></span><button id="reset-quest" class="text-button muted" type="button" data-i18n="resetQuest">Reset checklist</button></div></section>
+          <section class="panel truth-panel"><div class="tiny-shield" aria-hidden="true">?</div><h3 data-i18n="truthTitle">Evidence, not wishful thinking.</h3><p data-i18n="truthBody">A commit trailer is a clue, not proof of an account or a verified human. A public REST scan only finds candidates. Imported linked-author evidence is stronger, but this app does not independently verify it.</p><a class="text-link" href="https://github.com/Reasonofmoon/coop-quest" target="_blank" rel="noopener noreferrer" data-i18n="readMethod">Read the project & methodology</a></section>
+        </aside>
+      </div>
+    </section>
+    <footer class="site-footer"><span>Co-op Quest <span class="footer-dot" aria-hidden="true">/</span> <span data-i18n="footer">Built for useful work, not badge farming.</span></span><span data-i18n="localOnly">Saved in this browser only.</span></footer>
+  </main>
+  <noscript><p class="wrap">JavaScript is required. No information will be fetched until you explicitly scan public PRs.</p></noscript>
+</body>
+</html>

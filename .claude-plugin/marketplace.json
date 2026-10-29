@@ -1,0 +1,26 @@
+{
+  "name": "coop-quest",
+  "owner": {
+    "name": "Reason of Moon",
+    "url": "https://github.com/Reasonofmoon"
+  },
+  "metadata": {
+    "description": "Standalone local Co-op Quest GAME MODE mod (unverified beta)",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "game-coop-quest",
+      "source": "./",
+      "version": "0.1.0",
+      "description": "Local linked-author PR RPG quest. Explicit gh scan only. Beta: real SDK runtime validation pending.",
+      "category": "development",
+      "keywords": [
+        "mod",
+        "game-mode",
+        "cooperation",
+        "pane"
+      ]
+    }
+  ]
+}

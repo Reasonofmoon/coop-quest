@@ -1,0 +1,51 @@
+{
+  "name": "game-coop-quest",
+  "displayName": "GAME MODE · Co-op Quest (unverified beta)",
+  "version": "0.1.0",
+  "description": "Local linked-author PR RPG quest. Explicit gh scan only. Beta: real SDK runtime validation pending.",
+  "author": {
+    "name": "Reason of Moon",
+    "url": "https://github.com/Reasonofmoon"
+  },
+  "homepage": "https://github.com/Reasonofmoon/coop-quest",
+  "repository": "https://github.com/Reasonofmoon/coop-quest",
+  "license": "MIT",
+  "keywords": [
+    "mod",
+    "game-mode",
+    "cooperation",
+    "pane"
+  ],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "intensity": {
+      "type": "string",
+      "title": "Intensity",
+      "description": "off draws and records nothing; casual shows local progress; hardcore also shows up to 8 local PR titles",
+      "default": "casual",
+      "options": [
+        "off",
+        "casual",
+        "hardcore"
+      ]
+    },
+    "palette": {
+      "type": "string",
+      "title": "Palette",
+      "description": "theme follows the current Claude Code theme",
+      "default": "nes",
+      "options": [
+        "nes",
+        "gameboy",
+        "amber",
+        "theme"
+      ]
+    },
+    "player": {
+      "type": "string",
+      "title": "GitHub player login",
+      "description": "Blank uses the existing authenticated gh account when you explicitly scan. No token is read.",
+      "default": ""
+    }
+  }
+}

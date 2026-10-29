@@ -1,0 +1,31 @@
+name: verify
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test coop-core.test.mjs
+  mod-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Claude Code SDK runner
+        run: npm install -g @anthropic-ai/claude-code
+      - name: Record runner version
+        run: claude --version
+      - name: Strictly validate standalone plugin
+        run: claude plugin validate --strict .
+      - name: Run mod engine tests
+        run: claude plugin test .
